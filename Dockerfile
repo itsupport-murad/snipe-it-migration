@@ -16,4 +16,5 @@ RUN mkdir -p /app/backup
 COPY backup/ /app/backup/
 
 # Keep container running so we can exec into it
-CMD ["tail", "-f", "/dev/null"]
+ENTRYPOINT []
+CMD ["/bin/sh", "-c", "echo 'Migration helper ready. Run: python migrate.py' && tail -f /dev/null"]
