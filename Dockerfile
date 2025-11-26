@@ -15,6 +15,11 @@ RUN mkdir -p /app/backup
 # Copy backup file
 COPY backup/ /app/backup/
 
-# Keep container running so we can exec into it
-ENTRYPOINT []
-CMD ["/bin/sh", "-c", "echo 'Migration helper ready. Run: python migrate.py' && tail -f /dev/null"]
+# Create a simple startup script
+RUN echo '#!/bin/sh' > /start.sh && \
+    echo 'echo "Migration helper ready. Run: python migrate.py"' >> /start.sh && \
+    echo 'sleep infinity' >> /start.sh && \
+    chmod +x /start.sh
+
+# Keep container running
+CMD ["/start.sh"]
