@@ -185,8 +185,8 @@ def verify_import():
         conn = pymysql.connect(**DB_CONFIG)
         cursor = conn.cursor()
         
-        # Check important Snipe-IT tables
-        tables = ['users', 'assets', 'models', 'categories', 'locations', 'settings', 'manufacturers', 'suppliers']
+        # Check important Snipe-IT tables (with stfs_ prefix from backup)
+        tables = ['stfs_users', 'stfs_assets', 'stfs_models', 'stfs_categories', 'stfs_locations', 'stfs_settings', 'stfs_manufacturers', 'stfs_suppliers']
         
         for table in tables:
             try:
