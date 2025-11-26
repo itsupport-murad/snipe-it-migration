@@ -15,5 +15,5 @@ RUN mkdir -p /app/backup
 # Copy backup file
 COPY backup/ /app/backup/
 
-# Run migration automatically on start
+# Run migration automatically when container starts
 CMD ["python", "migrate.py"]
